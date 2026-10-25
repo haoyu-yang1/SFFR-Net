@@ -27,11 +27,7 @@ from transformers import AutoProcessor, CLIPModel, ViTModel, ViTConfig
 logger = logging.getLogger(__name__)
 
 class SafeLargeSelectiveKernel(nn.Module):
-    """
-    Baseline-safe LSK
-    只学习一个空间残差 delta，不再直接 identity * attention 强乘。
-    初始时接近恒等映射，避免拉低 baseline。
-    """
+   
     def __init__(self, dim):
         super(SafeLargeSelectiveKernel, self).__init__()
 
@@ -94,11 +90,7 @@ class SafeLargeSelectiveKernel(nn.Module):
         return out
 
 class PhaseAmpFreqAttentionBlock(nn.Module):
-    """
-    Baseline-safe PAFA
-    由 PAFA 生成频域残差 freq_delta，再用 gate 控制是否加入。
-    不再输出 [0,1] mask 去直接放大原始特征。
-    """
+ 
     def __init__(self, dim=1024, h=16, w=16):
         super(PhaseAmpFreqAttentionBlock, self).__init__()
 
