@@ -187,8 +187,8 @@ class PhaseAmpFreqAttentionBlock(nn.Module):
 
         return out.to(dtype=dtype), gate.to(dtype=dtype)
 
-@DETECTOR.register_module(module_name='effort_freq')
-class EffortFreqDetector(nn.Module):
+@DETECTOR.register_module(module_name='effort')
+class EffortDetector(nn.Module):
     def __init__(self, config=None):
         super(EffortFreqDetector, self).__init__()
         self.config = config
